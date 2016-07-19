@@ -48,3 +48,7 @@ function bgCanAddDefinitions(definitions, modes, callback) {
 function bgAddDefinition(definition, mode, callback) {
     bgSendMessage('addDefinition', {definition, mode}, callback);
 }
+
+function bgFailCard(definition, mode, callback) {
+    bgSendMessage('failCard', {definition, mode}, callback);
+}

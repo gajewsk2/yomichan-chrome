@@ -36,6 +36,16 @@ function registerAddNoteLinks() {
     }
 }
 
+function registerFailCardLinks() {
+    for (let link of [].slice.call(document.getElementsByClassName('action-fail-card'))) {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const ds = e.currentTarget.dataset;
+            window.parent.postMessage({action: 'failNote', params: {index: ds.index, mode: ds.mode}}, '*');
+        });
+    }
+}
+
 function registerAudioLinks() {
     for (let link of [].slice.call(document.getElementsByClassName('action-play-audio'))) {
         link.addEventListener('click', (e) => {
@@ -50,6 +60,7 @@ function onDomContentLoaded() {
     registerKanjiLinks();
     registerAddNoteLinks();
     registerAudioLinks();
+    registerFailCardLinks();
 }
 
 function onMessage(e) {
